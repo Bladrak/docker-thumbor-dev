@@ -6,5 +6,7 @@ jobs:
       - checkout
       - run: |
           docker build -t bladrak/thumbor-dev:latest .
+          docker build -t bladrak/thumbor-dev-py3:latest -f Dockerfile-py3 .
           docker login -u $DOCKER_USER -p $DOCKER_PASS
           docker push bladrak/thumbor-dev:latest
+          docker push bladrak/thumbor-dev-py3:latest

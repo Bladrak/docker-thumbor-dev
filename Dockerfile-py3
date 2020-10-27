@@ -1,4 +1,4 @@
-FROM julianbei/alpine-opencv-microimage:p2-3.1
+FROM julianbei/alpine-opencv-microimage:p3-3.1
 
 RUN apk add --update openssl-dev jpeg-dev git
 RUN apk add --no-cache libimagequant@edge pngquant@edgunity
