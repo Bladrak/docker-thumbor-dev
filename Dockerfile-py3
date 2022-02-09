@@ -1,8 +1,12 @@
-FROM julianbei/alpine-opencv-microimage:p3-3.1
+FROM python:3.10-slim
 
-RUN apk add --update openssl-dev jpeg-dev git
-RUN apk add --no-cache libimagequant@edge pngquant@edgunity
-RUN apk add --no-cache libjpeg-turbo-utils
-RUN apk del cmake curl-dev
-RUN apk add --update curl-dev libffi-dev cmake
-RUN pip install pipenv
+RUN apt-get update -y && apt-get install -y \
+    python3-dev libcurl4-openssl-dev libgnutls28-dev python3-all-dev \
+    libboost-python-dev make zlib1g-dev gcc libssl-dev \
+    && apt-get clean
+RUN apt-get update -y && apt-get install --reinstall -y \
+    build-essential \
+    && apt-get clean
+
+RUN pip install --upgrade pip
+
